@@ -1,12 +1,12 @@
 @tool
 extends EditorProperty
 
-const InspectorUtils = preload("res://addons/dialogue/utils/common.gd")
-const branch_icon = preload("res://addons/dialogue/icons/branch.svg")
-const bubble_icon = preload("res://addons/dialogue/icons/bubble.svg")
+const InspectorUtils = preload("res://addons/godialogue/utils/common.gd")
+const branch_icon = preload("res://addons/godialogue/icons/branch.svg")
+const bubble_icon = preload("res://addons/godialogue/icons/bubble.svg")
 
-var line_list := preload("res://addons/dialogue/utils/line_list.gd").new()
-var tab_manager := preload("res://addons/dialogue/utils/tab_manager.gd").new()
+var line_list := preload("res://addons/godialogue/utils/line_list.gd").new()
+var tab_manager := preload("res://addons/godialogue/utils/tab_manager.gd").new()
 var next_message: BranchControl = BranchControl.new(true)
 var branching: bool
 

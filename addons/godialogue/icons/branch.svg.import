@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lgru5fqyuegk"
-path="res://.godot/imported/branch.svg-3a035d5eb77fc1716156e5569c571142.ctex"
+path="res://.godot/imported/branch.svg-fefd3b84c62895cfaed0fb7f4023e9c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/dialogue/icons/branch.svg"
-dest_files=["res://.godot/imported/branch.svg-3a035d5eb77fc1716156e5569c571142.ctex"]
+source_file="res://addons/godialogue/icons/branch.svg"
+dest_files=["res://.godot/imported/branch.svg-fefd3b84c62895cfaed0fb7f4023e9c7.ctex"]
 
 [params]
 

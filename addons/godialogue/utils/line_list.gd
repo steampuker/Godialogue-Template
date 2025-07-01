@@ -1,6 +1,6 @@
 @tool
 extends VBoxContainer
-const InspectorUtils = preload("res://addons/dialogue/utils/common.gd")
+const InspectorUtils = preload("res://addons/godialogue/utils/common.gd")
 
 var foldable: VBoxContainer = VBoxContainer.new()
 var add_button = Button.new()

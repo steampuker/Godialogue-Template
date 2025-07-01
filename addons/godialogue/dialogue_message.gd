@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/dialogue/icons/bubble.svg")
+@icon("res://addons/godialogue/icons/bubble.svg")
 class_name DialogueMessage extends Resource
 
 # Message Lines

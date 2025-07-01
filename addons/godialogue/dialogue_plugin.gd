@@ -2,7 +2,7 @@
 extends EditorPlugin
 
 class MessageInspector extends EditorInspectorPlugin:
-	const property_editor = preload("res://addons/dialogue/message_container.gd")
+	const property_editor = preload("res://addons/godialogue/message_container.gd")
 	func _can_handle(object):
 		return object is DialogueMessage
 		

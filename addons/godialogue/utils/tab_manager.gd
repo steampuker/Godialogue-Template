@@ -1,7 +1,7 @@
 @tool
 extends VBoxContainer
 
-const InspectorUtils = preload("res://addons/dialogue/utils/common.gd")
+const InspectorUtils = preload("res://addons/godialogue/utils/common.gd")
 
 var control_list: VBoxContainer = VBoxContainer.new()
 var tab_bar := HBoxContainer.new()
