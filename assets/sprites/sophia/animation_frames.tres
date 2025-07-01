@@ -1,0 +1,85 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dckjxhhis46vv"]
+
+[ext_resource type="Texture2D" uid="uid://dqyu1f8cxadgd" path="res://assets/sprites/sophia/jump_fall.png" id="1_5b0cj"]
+[ext_resource type="Texture2D" uid="uid://dsjwb567qyt6h" path="res://assets/sprites/sophia/sophia_sheet.png" id="1_jacxd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b0cj"]
+atlas = ExtResource("1_5b0cj")
+region = Rect2(22, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6chw0"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(0, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u62cd"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(21, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i7ml"]
+atlas = ExtResource("1_5b0cj")
+region = Rect2(0, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qriid"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(63, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2cdg"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(42, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmqxo"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(84, 0, 21, 26)
+
+[resource]
+resource_name = "SophiaFrames"
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b0cj")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6chw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u62cd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i7ml")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qriid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2cdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmqxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2cdg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]

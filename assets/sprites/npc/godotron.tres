@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://d2ovm0eh80qy4"]
+
+[ext_resource type="Texture2D" uid="uid://jfb8233426b3" path="res://assets/npc/godotron.png" id="1_s5dfh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2l20"]
+atlas = ExtResource("1_s5dfh")
+region = Rect2(0, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnax7"]
+atlas = ExtResource("1_s5dfh")
+region = Rect2(0, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhxmn"]
+atlas = ExtResource("1_s5dfh")
+region = Rect2(26, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfw0e"]
+atlas = ExtResource("1_s5dfh")
+region = Rect2(52, 0, 25, 36)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2l20")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnax7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhxmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnax7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfw0e")
+}],
+"loop": true,
+"name": &"yapping",
+"speed": 5.0
+}]

@@ -1,0 +1,219 @@
+[gd_scene load_steps=20 format=4 uid="uid://cntdd20bb8b43"]
+
+[ext_resource type="PackedScene" uid="uid://kcr8wtl3tqdn" path="res://scenes/prefabs/npc.tscn" id="1_1h837"]
+[ext_resource type="SpriteFrames" uid="uid://d2ovm0eh80qy4" path="res://assets/sprites/npc/godotron.tres" id="2_gl1un"]
+[ext_resource type="FontFile" uid="uid://clq81igd2sixd" path="res://assets/fonts/Zicons.ttf" id="2_rv78h"]
+[ext_resource type="Script" uid="uid://cycc74ng8hbr0" path="res://addons/godialogue/dialogue_message.gd" id="3_sptji"]
+[ext_resource type="SpriteFrames" uid="uid://b6dlj8ihx7c6d" path="res://assets/sprites/npc/wizard.tres" id="4_nyaq3"]
+[ext_resource type="PackedScene" uid="uid://b7piv58mpd6cg" path="res://scenes/prefabs/sophia.tscn" id="5_yf2ql"]
+[ext_resource type="Texture2D" uid="uid://bcoqimaey4i06" path="res://assets/tile.png" id="6_8gbmn"]
+[ext_resource type="Script" uid="uid://6gd6qergnbup" path="res://scripts/sound_manager.gd" id="7_0tygy"]
+[ext_resource type="FontFile" uid="uid://baw3rlyawewth" path="res://assets/fonts/Habbo.ttf" id="7_1h837"]
+[ext_resource type="Script" uid="uid://7qrf6dw6wwhl" path="res://scripts/dialogue_manager.gd" id="7_v4e37"]
+[ext_resource type="AudioStream" uid="uid://y8v2hj4dfedu" path="res://assets/music/background.ogg" id="9_sptji"]
+
+[sub_resource type="Resource" id="Resource_1h837"]
+script = ExtResource("3_sptji")
+lines_text = PackedStringArray("Hello", "Heello")
+lines_data = Array[Resource]([null, null])
+branch_labels = PackedStringArray()
+branches = Dictionary[String, ExtResource("3_sptji")]({
+"next": null
+})
+is_branching = false
+replacing = false
+continuous = false
+metadata/_custom_type_script = "uid://cycc74ng8hbr0"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(24, 29)
+
+[sub_resource type="Resource" id="Resource_wuru7"]
+script = ExtResource("3_sptji")
+lines_text = PackedStringArray("Uhh, yes")
+lines_data = Array[Resource]([null])
+branch_labels = PackedStringArray()
+branches = Dictionary[String, ExtResource("3_sptji")]({
+"next": null
+})
+is_branching = false
+replacing = false
+continuous = false
+metadata/_custom_type_script = "uid://cycc74ng8hbr0"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
+size = Vector2(24, 29)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1byju"]
+texture = ExtResource("6_8gbmn")
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_nd7wu"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1byju")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4c57u"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(40, 7.59)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Npc" parent="NPCs" instance=ExtResource("1_1h837")]
+position = Vector2(165, -97)
+sprite_frames = ExtResource("2_gl1un")
+animation = &"yapping"
+frame_progress = 0.727291
+message = SubResource("Resource_1h837")
+repeat_yapping = 2
+shape = SubResource("RectangleShape2D_272bh")
+shape_offset = Vector2(-17.03, 3.705)
+icon_position = Vector2(-4, -32)
+
+[node name="Npc2" parent="NPCs" instance=ExtResource("1_1h837")]
+position = Vector2(-154, -5)
+sprite_frames = ExtResource("4_nyaq3")
+flip_h = true
+message = SubResource("Resource_wuru7")
+talk_spot = 12.0
+shape = SubResource("RectangleShape2D_5vw27")
+shape_offset = Vector2(12.07, 6)
+icon_position = Vector2(-4, -40)
+
+[node name="Sophia" parent="." instance=ExtResource("5_yf2ql")]
+xspeed = 45.0
+jump_height = 64.0
+rise_time = 0.42
+fall_time = 0.38
+coyote_time = 0.7
+jump_buffer_time = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="Sophia"]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.1
+drag_right_margin = 0.15
+drag_bottom_margin = 0.1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAEAAAABAAAAAAABAAEAAAABAAEAAAD9/wEAAAABAAAAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAD8/wIAAAABAAEAAAD9/wIAAAABAAEAAAD+/wIAAAABAAEAAAD//wIAAAABAAEAAAAAAAIAAAABAAEAAAABAAIAAAABAAEAAAD3/wEAAAABAAAAAAD3/wIAAAABAAEAAAD3/wMAAAABAAEAAAD3/wQAAAABAAIAAAD4/wEAAAABAAAAAAD4/wIAAAABAAEAAAD4/wMAAAABAAEAAAD4/wQAAAABAAIAAAD5/wEAAAABAAAAAAD5/wIAAAABAAEAAAD5/wMAAAABAAEAAAD5/wQAAAABAAIAAAD6/wEAAAABAAAAAAD6/wIAAAABAAEAAAD6/wMAAAABAAEAAAD6/wQAAAABAAIAAAD7/wEAAAABAAAAAAD7/wIAAAABAAEAAAD7/wMAAAABAAEAAAD7/wQAAAABAAIAAAD8/wEAAAABAAAAAAD8/wMAAAABAAEAAAD8/wQAAAABAAIAAAD9/wMAAAABAAEAAAD9/wQAAAABAAIAAAD+/wMAAAABAAEAAAD+/wQAAAABAAIAAAD//wMAAAABAAEAAAD//wQAAAABAAIAAAAAAAMAAAABAAEAAAAAAAQAAAABAAIAAAABAAMAAAABAAEAAAABAAQAAAABAAIAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAIAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAADAAMAAAABAAEAAAADAAQAAAABAAIAAAAEAAEAAAABAAAAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAAEAAQAAAABAAIAAAAFAAEAAAABAAAAAAAFAAIAAAABAAEAAAAFAAMAAAABAAEAAAAFAAQAAAABAAIAAAAGAAEAAAABAAAAAAAGAAIAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAIAAAAHAAEAAAABAAAAAAAHAAIAAAABAAEAAAAHAAMAAAABAAEAAAAHAAQAAAABAAIAAAAIAAEAAAABAAAAAAAIAAIAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAIAAAAJAAEAAAABAAAAAAAJAAIAAAABAAEAAAAJAAMAAAABAAEAAAAJAAQAAAABAAIAAAAKAAEAAAABAAEAAAAKAAIAAAABAAEAAAAKAAMAAAABAAEAAAAKAAQAAAACAAIAAAD0/wEAAAAAAAAAAAD0/wIAAAAAAAEAAAD0/wMAAAAAAAEAAAD0/wQAAAAAAAIAAAD1/wEAAAABAAAAAAD1/wIAAAABAAEAAAD1/wMAAAABAAEAAAD1/wQAAAABAAIAAAD2/wEAAAABAAAAAAD2/wIAAAABAAEAAAD2/wMAAAABAAEAAAD2/wQAAAABAAIAAAAKAAAAAAABAAEAAAAKAP//AAABAAEAAAAKAP7/AAABAAEAAAAKAP3/AAABAAEAAAAKAPz/AAABAAEAAAAKAPv/AAABAAAAAAAJAPv/AAABAAAAAAAIAPv/AAABAAAAAAAHAPv/AAAAAAAAAAAJAPz/AAABAAEAAAAIAPz/AAABAAEAAAAHAPz/AAAAAAEAAAALAAIAAAACAAEAAAALAAEAAAACAAEAAAALAAAAAAACAAEAAAALAP//AAACAAEAAAALAP7/AAACAAEAAAALAP3/AAACAAEAAAALAPz/AAACAAEAAAALAPv/AAACAAAAAAALAAMAAAACAAIAAAAHAP3/AAAAAAIAAAAIAP3/AAABAAIAAAAJAP3/AAABAAIAAAACAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAP//AAAAAAAAAAACAP//AAABAAAAAAADAP//AAACAAAAAAADAAAAAAACAAEAAAAMAPv/AAABAAEAAAANAPv/AAABAAEAAAAOAPv/AAABAAEAAAAPAPv/AAABAAEAAAAQAPv/AAABAAEAAAARAPv/AAABAAEAAAASAPv/AAABAAEAAAATAPv/AAABAAEAAAAUAPv/AAABAAEAAAAVAPv/AAABAAEAAAAWAPv/AAABAAEAAAAXAPv/AAABAAEAAAAYAPv/AAABAAEAAAAZAPv/AAABAAEAAAAaAPv/AAABAAEAAAAbAPv/AAABAAEAAAAcAPv/AAABAAEAAAAdAPv/AAABAAEAAAAeAPv/AAABAAEAAAAfAPv/AAABAAEAAAAgAPv/AAABAAEAAAAhAPv/AAABAAEAAAAiAPv/AAABAAEAAAAjAPv/AAABAAEAAAAkAPv/AAABAAEAAAAlAPv/AAABAAEAAAAmAPv/AAABAAEAAAAnAPv/AAABAAEAAAAoAPv/AAABAAEAAAApAPv/AAABAAEAAAAqAPv/AAABAAEAAAArAPv/AAABAAEAAAAsAPv/AAABAAEAAADz/wEAAAABAAEAAADy/wEAAAABAAEAAADx/wEAAAABAAEAAADw/wEAAAABAAEAAADv/wEAAAABAAEAAADu/wEAAAABAAEAAADt/wEAAAABAAEAAADs/wEAAAABAAEAAADr/wEAAAABAAEAAADq/wEAAAABAAEAAADp/wEAAAABAAEAAADo/wEAAAABAAEAAADn/wEAAAABAAEAAADm/wEAAAABAAEAAADl/wEAAAABAAEAAADk/wEAAAABAAEAAADj/wEAAAABAAEAAADi/wEAAAABAAEAAADh/wEAAAABAAEAAADg/wEAAAABAAEAAADf/wEAAAABAAEAAADe/wEAAAABAAEAAADe/wIAAAABAAEAAADe/wAAAAABAAEAAADe////AAABAAEAAADe//7/AAABAAEAAADe//3/AAABAAEAAADe//z/AAABAAEAAAA=")
+tile_set = SubResource("TileSet_nd7wu")
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+position = Vector2(4, -68)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+position = Vector2(0, 6.205)
+scale = Vector2(2, 0.38)
+mesh = SubResource("QuadMesh_4c57u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(0, 6.205)
+shape = SubResource("RectangleShape2D_kek77")
+one_way_collision = true
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="DialogueManager" type="Label" parent="Interface" groups=["DialogueManager"]]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.5
+offset_top = -129.0
+offset_right = -0.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_1h837")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_v4e37")
+
+[node name="Branches" type="Label" parent="Interface/DialogueManager"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = 3.0
+offset_right = 0.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_1h837")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+
+[node name="Background" type="ColorRect" parent="Interface/DialogueManager/Branches"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = 8.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0.176471, 0.176471, 0.172549)
+
+[node name="Background" type="ColorRect" parent="Interface/DialogueManager"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -2.0
+offset_right = 10.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0.176471, 0.176471, 0.564706)
+
+[node name="Button" type="Button" parent="Interface" node_paths=PackedStringArray("player")]
+offset_right = 22.0
+offset_bottom = 24.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_rv78h")
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+text = "Z"
+script = ExtResource("7_0tygy")
+player = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Interface/Button"]
+stream = ExtResource("9_sptji")
+volume_db = -6.0
