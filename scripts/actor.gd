@@ -1,51 +1,56 @@
+@tool
 class_name Actor
-extends AnimatedSprite2D
+extends Area2D
 
 @export var message: DialogueMessage
+@export var message_manager: DialogueManagerBase
 @export_group("Interaction")
 @export var repeat_yapping: int = 4
 @export var talk_spot: float = 0.0
-@export var shape: Shape2D:
-	set(value):
-		if(Engine.is_editor_hint() && shape_object != null):
-			shape_object.shape = value
-		shape = value
-	get():
-		return shape
-@export var shape_offset: Vector2:
-	set(value):
-		if(Engine.is_editor_hint() && shape_object != null):
-			shape_object.position = value
-		shape_offset = value
-	get():
-		return shape_offset
 
-@onready var area: Area2D = $Area
-@onready var shape_object: CollisionShape2D = $Area/Shape
+@export_group("Appearance")
+@export var icon_symbol: String:
+	set(value):
+		if(icon): icon.text = value
+		icon_symbol = value
+@export var icon_position: Vector2 = Vector2(0, -50):
+	set(value):
+		if(icon): icon.position = value
+		icon_position = value
+@export var sprite_frames: SpriteFrames:
+	set(value):
+		if(sprite): sprite.sprite_frames = value
+		sprite_frames = value
+@export var flip: bool:
+	set(value): 
+		if(sprite): sprite.flip_h = value
+		flip = value
+
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var icon: Label = $Icon
-@export var icon_position: Vector2
-
 var icon_tween: Tween
 var my_speech: bool = false
 
 func _ready():
-	if(Engine.is_editor_hint()): return
+	sprite.flip_h = flip
+	sprite.sprite_frames = sprite_frames
+	icon.text = icon_symbol
 	icon.position = icon_position
-	icon.visible = false
-	shape_object.shape = shape
-	shape_object.position = shape_offset
-	area.body_entered.connect(onEnter)
-	area.body_exited.connect(onExit)
 	
-	$"../../Interface/DialogueManager".message_started.connect(
+	if(Engine.is_editor_hint()): return
+	icon.visible = false
+	body_entered.connect(onEnter)
+	body_exited.connect(onExit)
+	
+	message_manager.message_started.connect(
 	func(msg): my_speech = msg == message)
 	
-	$"../../Interface/DialogueManager".line_started.connect(
+	message_manager.line_started.connect(
 		func(): if(my_speech): messageInteracted()
 	)
 	
-	$"../../Interface/DialogueManager".message_ended.connect(
-	func(msg): if(my_speech): 
+	message_manager.message_ended.connect(
+	func(_msg): if(my_speech): 
 		icon.visible = true
 		my_speech = false
 		)
@@ -55,7 +60,7 @@ func showIcon():
 	icon_tween = create_tween()
 	icon_tween.set_loops()
 	icon_tween.tween_property(icon, "position:y", icon_position.y + 1.0, 1.0).from(icon_position.y - 1.0)
-	icon_tween.tween_property(icon, "position:y", icon_position.y - 1.0, 1.0).from(icon_position.y + 1.0)
+	icon_tween.tween_property(icon, "position:y", icon_position.y- 1.0, 1.0).from(icon_position.y + 1.0)
 
 func onEnter(body):
 	if(body is CharacterController):
@@ -73,8 +78,8 @@ func getTalkSpot():
 
 func messageInteracted():
 	icon.visible = false
-	play("yapping")
+	sprite.play("yapping")
 	
 	for i in range(repeat_yapping):
-		await animation_looped
-	play("default")
+		await sprite.animation_looped
+	sprite.play("default")

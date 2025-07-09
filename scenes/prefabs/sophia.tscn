@@ -13,9 +13,8 @@ script = ExtResource("1_2kokt")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_avaup")
-animation = &"fall"
 centered = false
-offset = Vector2(-10, -13)
+offset = Vector2(-10, -15)
 script = ExtResource("3_5yy20")
 fps = 10.0
 speed = 0.8

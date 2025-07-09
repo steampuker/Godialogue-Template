@@ -1,14 +1,18 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://b6dlj8ihx7c6d"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b6dlj8ihx7c6d"]
 
 [ext_resource type="Texture2D" uid="uid://cchv3y3xqtj0p" path="res://assets/npc/wizard.png" id="1_sn3ph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sn3ph"]
 atlas = ExtResource("1_sn3ph")
-region = Rect2(0, 0, 26, 46)
+region = Rect2(0, 0, 21, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upgfd"]
 atlas = ExtResource("1_sn3ph")
-region = Rect2(26, 0, 26, 46)
+region = Rect2(0, 0, 21, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxsoj"]
+atlas = ExtResource("1_sn3ph")
+region = Rect2(22, 0, 21, 49)
 
 [resource]
 animations = [{
@@ -22,10 +26,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sn3ph")
+"texture": SubResource("AtlasTexture_upgfd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_upgfd")
+"texture": SubResource("AtlasTexture_bxsoj")
 }],
 "loop": true,
 "name": &"yapping",

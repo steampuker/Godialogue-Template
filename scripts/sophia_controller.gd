@@ -1,6 +1,8 @@
 class_name CharacterController
 extends CharacterBody2D
 
+@export var DialogueManager: DialogueManagerBase
+
 @export var xspeed: float = 1.0
 @onready var animator: SophiaAnimator = $Sprite
 
@@ -24,16 +26,15 @@ var actor_property: StringName
 
 var disable_movement: bool = false
 
-var DialogueManager: DialogueManagerBase
-
 func _ready():
-	DialogueManager = $"../Interface/DialogueManager"
-	DialogueManager.message_started.connect(func(_discard): animator.flip_v = true; disable_movement = true)
-	DialogueManager.message_ended.connect(func(_discard): animator.flip_v = false; disable_movement = false)
+	if(!DialogueManager): return
+	DialogueManager.message_ended.connect(func(_discard): disable_movement = false)
+	
+	DialogueManager.interacted.connect(processInteraction)
 
 func _process(_delta):
 	processAnimation()
-	processInteraction()
+	#if(!disable_movement && DialogueManager.interact_ready): processInteraction()
 	
 func processAnimation():
 	if(velocity.x != 0):
@@ -73,10 +74,12 @@ func handleJump(delta):
 		velocity.y = maxf(0, velocity.y)
 
 func processInteraction():
-	if(!disable_movement && Input.is_action_just_released("interact") && actor_object != null):
-		velocity.x = 0.0
-		animator.flip_h = (actor_object.position.x - position.x) < 0.0
-		DialogueManager.processProperty(actor_object, actor_property);
+	if actor_object == null: return
+	velocity.x = 0.0
+	animator.flip_h = (actor_object.position.x - position.x) < 0.0
+	disable_movement = true
+	await animator.wave()
+	DialogueManager.processProperty(actor_object, actor_property);
 
 func setActor(actor: Actor, property: StringName):
 	actor_object = actor

@@ -1,35 +1,48 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dckjxhhis46vv"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://dckjxhhis46vv"]
 
 [ext_resource type="Texture2D" uid="uid://dqyu1f8cxadgd" path="res://assets/sprites/sophia/jump_fall.png" id="1_5b0cj"]
 [ext_resource type="Texture2D" uid="uid://dsjwb567qyt6h" path="res://assets/sprites/sophia/sophia_sheet.png" id="1_jacxd"]
+[ext_resource type="Texture2D" uid="uid://d1aii5fx6dedt" path="res://assets/sprites/sophia/wave.png" id="3_37had"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5b0cj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_37had"]
 atlas = ExtResource("1_5b0cj")
-region = Rect2(22, 0, 21, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6chw0"]
-atlas = ExtResource("1_jacxd")
-region = Rect2(0, 0, 21, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u62cd"]
-atlas = ExtResource("1_jacxd")
-region = Rect2(21, 0, 21, 26)
+region = Rect2(23, 0, 20, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i7ml"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(0, 0, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5utv"]
+atlas = ExtResource("1_jacxd")
+region = Rect2(21, 0, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu8vx"]
 atlas = ExtResource("1_5b0cj")
-region = Rect2(0, 0, 21, 26)
+region = Rect2(1, 0, 20, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qriid"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vrp6"]
 atlas = ExtResource("1_jacxd")
-region = Rect2(63, 0, 21, 26)
+region = Rect2(63, 0, 20, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2cdg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yo60"]
 atlas = ExtResource("1_jacxd")
-region = Rect2(42, 0, 21, 26)
+region = Rect2(42, 0, 20, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmqxo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrsmh"]
 atlas = ExtResource("1_jacxd")
-region = Rect2(84, 0, 21, 26)
+region = Rect2(84, 0, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnnwm"]
+atlas = ExtResource("3_37had")
+region = Rect2(20, 0, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh676"]
+atlas = ExtResource("3_37had")
+region = Rect2(0, 0, 20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmm03"]
+atlas = ExtResource("3_37had")
+region = Rect2(40, 0, 20, 28)
 
 [resource]
 resource_name = "SophiaFrames"
@@ -41,7 +54,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5b0cj")
+"texture": SubResource("AtlasTexture_37had")
 }],
 "loop": true,
 "name": &"fall",
@@ -49,10 +62,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6chw0")
+"texture": SubResource("AtlasTexture_3i7ml")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u62cd")
+"texture": SubResource("AtlasTexture_k5utv")
 }],
 "loop": true,
 "name": &"idle",
@@ -60,7 +73,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3i7ml")
+"texture": SubResource("AtlasTexture_pu8vx")
 }],
 "loop": true,
 "name": &"jump",
@@ -68,18 +81,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qriid")
+"texture": SubResource("AtlasTexture_7vrp6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h2cdg")
+"texture": SubResource("AtlasTexture_5yo60")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmqxo")
+"texture": SubResource("AtlasTexture_jrsmh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h2cdg")
+"texture": SubResource("AtlasTexture_5yo60")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnnwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh676")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmm03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh676")
+}],
+"loop": false,
+"name": &"wave",
+"speed": 15.0
 }]

@@ -3,12 +3,10 @@ extends DialogueManagerBase
 var label = self
 
 func _ready():
-	var confirm := InputConfig.new()
-	confirm.from_keyboard = true
-	confirm.keycodes.append(KEY_UP)
-	input_configs["confirm"] = confirm
+	interact_config = InputConfig.fromAction("interact")
+	input_configs["confirm"] = interact_config
 
-func messageStart():
+func messageStart(_line: String):
 	label.visible = true
 	
 func messageEnd():

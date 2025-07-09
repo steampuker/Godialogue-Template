@@ -1,6 +1,9 @@
 class_name SophiaAnimator
 extends AnimatedSprite2D
 
+const jump_stretch: Vector2 = Vector2(0.8, 1.25)
+const land_squash: Vector2 = Vector2(1.15, 0.85)
+
 @export var fps: float = 5.0
 @export var speed: float = 1.0
 
@@ -14,7 +17,7 @@ func _ready():
 	blink()
 	
 func blink():
-	if(animation == "idle"):
+	if(animation == "idle" || animation == "wave"):
 		return
 	
 	if(tween): tween.kill()
@@ -41,24 +44,36 @@ func handle_land():
 	if(animation != "fall"): return
 	
 	scale_tween = create_tween()
-	scale_tween.tween_property(self, "scale", Vector2(1.1, 0.9), 0.5 / fps).from(Vector2.ONE);
+	scale_tween.tween_property(self, "scale", land_squash, 0.5 / fps).from(Vector2.ONE);
 	scale_tween.tween_property(self, "scale", Vector2.ONE,  0.5 / fps);
 
 func jump():
 	if(animation == "jump"):
 		return
 	animation = "jump"
-	if(scale_tween): scale_tween.kill()
+	if(scale_tween): 
+		scale = Vector2.ONE
+		scale_tween.kill()
 	
 	scale_tween = create_tween()
-	scale_tween.tween_property(self, "scale", Vector2(0.75, 1.25), 1.0 / fps).from(Vector2.ONE);
+	scale_tween.tween_property(self, "scale", jump_stretch, 1.0 / fps).from(Vector2.ONE);
 	scale_tween.tween_property(self, "scale", Vector2.ONE,  1.0 / fps);
 	
 func fall():
 	if(animation == "fall"):
 		return
-	elif(animation == "jump"):
-		scale = Vector2.ONE
 	
 	animation = "fall"
-	if(scale_tween): scale_tween.kill()
+	if(scale_tween): 
+		scale = Vector2.ONE
+		scale_tween.kill()
+
+func wave():
+	animation = "wave"
+	
+	if(tween): tween.kill()
+	for i in range(3):
+		play("wave")
+		await animation_finished
+	animation = "default"
+	blink()
