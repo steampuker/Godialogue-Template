@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b18oj16h86ugf"
-path="res://.godot/imported/npc.png-e392f352b79a63b5e544ff507768849e.ctex"
+uid="uid://eqatrssbe55l"
+path="res://.godot/imported/sleepy.png-e179b2bc785daaf34e5d8f234a955753.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/npc/npc.png"
-dest_files=["res://.godot/imported/npc.png-e392f352b79a63b5e544ff507768849e.ctex"]
+source_file="res://assets/sprites/sophia/sleepy.png"
+dest_files=["res://.godot/imported/sleepy.png-e179b2bc785daaf34e5d8f234a955753.ctex"]
 
 [params]
 

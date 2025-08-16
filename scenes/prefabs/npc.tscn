@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://kcr8wtl3tqdn"]
+[gd_scene load_steps=4 format=3 uid="uid://kcr8wtl3tqdn"]
 
 [ext_resource type="Script" uid="uid://10mckk1tnppu" path="res://scripts/actor.gd" id="2_abqhh"]
 [ext_resource type="FontFile" uid="uid://clq81igd2sixd" path="res://assets/fonts/Zicons.ttf" id="2_rv78h"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/npc/godotron.tres" id="2_ubl3p"]
 
 [node name="Npc" type="Area2D"]
 script = ExtResource("2_abqhh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_ubl3p")
 
 [node name="Icon" type="Label" parent="."]
 offset_top = -50.0

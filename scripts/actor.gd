@@ -30,6 +30,7 @@ extends Area2D
 @onready var icon: Label = $Icon
 var icon_tween: Tween
 var my_speech: bool = false
+var player: CharacterController
 
 func _ready():
 	sprite.flip_h = flip
@@ -38,46 +39,52 @@ func _ready():
 	icon.position = icon_position
 	
 	if(Engine.is_editor_hint()): return
-	icon.visible = false
+	
+	initIcon()
 	body_entered.connect(onEnter)
 	body_exited.connect(onExit)
 	
-	message_manager.message_started.connect(
-	func(msg): my_speech = msg == message)
-	
-	message_manager.line_started.connect(
-		func(): if(my_speech): messageInteracted()
-	)
-	
+	message_manager.interacted.connect(interact)
+	message_manager.message_started.connect(func(msg): my_speech = msg == message)
+	message_manager.line_started.connect(func(): if(my_speech): lineChanged())
 	message_manager.message_ended.connect(
-	func(_msg): if(my_speech): 
-		icon.visible = true
-		my_speech = false
-		)
+		func(_msg): if(my_speech): 
+			if has_overlapping_bodies(): icon.visible = true
+			sprite.play("default")
+			my_speech = false
+	)
 
-func showIcon():
-	icon.visible = true
+func initIcon():
+	icon.visible = false
 	icon_tween = create_tween()
 	icon_tween.set_loops()
 	icon_tween.tween_property(icon, "position:y", icon_position.y + 1.0, 1.0).from(icon_position.y - 1.0)
 	icon_tween.tween_property(icon, "position:y", icon_position.y- 1.0, 1.0).from(icon_position.y + 1.0)
 
 func onEnter(body):
-	if(body is CharacterController):
-		showIcon()
-		body.setActor(self, "message")
+	if body is CharacterController:
+		player = body
+		icon.visible = true
 
 func onExit(body):
-	if(body is CharacterController):
-		icon_tween.kill()
+	if body is CharacterController:
+		player = null
 		icon.visible = false
-		body.removeActor(self)
+
+func interact():
+	if !player: return
+	icon.visible = false
+	await player.interactionReceived((position.x - player.position.x) < 0.0)
+	message_manager.current_actor = self
+	
+	# Alternatively: message = await message_manager.processMessage(message)
+	message_manager.processProperty(self, "message")
 
 func getTalkSpot():
 	return position.x + talk_spot
 
-func messageInteracted():
-	icon.visible = false
+func lineChanged():
+	if(sprite.animation == "yapping"): await sprite.animation_changed
 	sprite.play("yapping")
 	
 	for i in range(repeat_yapping):
